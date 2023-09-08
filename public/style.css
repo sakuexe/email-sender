@@ -1,0 +1,57 @@
+:root {
+  --text-color: #dedede;
+  --primary-bg: darkslateblue;
+  --secondary-bg: purple;
+  --wrapper-padding-inline: 1rem;
+  --wrapper-max-width: 50rem;
+}
+
+body {
+  margin: 0;
+  background: #321234;
+  color: var(--text-color);
+}
+
+.primary {
+  background-color: var(--primary-bg);
+}
+
+.container {
+  max-width: 50rem;
+  margin-inline: auto;
+  padding-inline: var(--wrapper-padding-inline);
+}
+
+.full-width-split-screen > :not(img) {
+  padding-inline: var(--wrapper-padding-inline);
+}
+
+@media (min-width: 600px) {
+  .full-width-split-screen {
+    display: grid;
+    grid-template-columns:
+      minmax(var(--wrapper-padding-inline), 1fr)
+      minmax(0, calc(var(--wrapper-max-width) / 2))
+      minmax(0, calc(var(--wrapper-max-width) / 2))
+      minmax(var(--wrapper-padding-inline), 1fr);
+    position: relative;
+  }
+
+  .full-width-split-screen > img {
+    grid-column: 1 / 3;
+  }
+
+  .full-width-split-screen > :not(img) {
+    display: grid;
+    align-content: center;
+    justify-content: start;
+  }
+
+  .full-width-split-screen > :not(img)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    grid-column: 4 / -1;
+    background: inherit;
+  }
+}
