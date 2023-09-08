@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Email Form Karttunen</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Email Form API</h1>
+      <p>by: Saku Karttunen - 2023</p>
+    </header>
+    <article>
+      <h2>Info</h2>
+      <p>
+        This API is a way for my static websites to use forms, to send emails.
+        This way, I do not have to build a backend for every website that would
+        only need it for sending emails.
+      </p>
+      <h3>Why did I make this, instead of using premade tools?</h3>
+      <p>
+        I wanted more experience with backend development and found myself
+        needing to send emails through forms in my static websites built for
+        clients. Learning ExpressJS was also something that I wanted to do, so
+        this was a perfect opportunity to simultaniously learn and solve a
+        problem.
+      </p>
+      <p>
+        I have tried using premade solutions, but the ones that were available,
+        seriously lacked customization for the emails being sent. This was a
+        problem for me, since the emails sent with these providers didn't feel
+        personal and in some cases, they even felt unprofessional.
+        <i
+          >(For example having the creator's image plastered on the email
+          account that sent the messages.)</i
+        >
+        No, I am not kidding. So as a result, I decided to make my own solution.
+      </p>
+      <h3>Technologies</h3>
+      <p>
+        This API is built with Node.js and Express.js. It uses Nodemailer to
+        send the emails. The API is hosted personally using a Ubuntu server and
+        Docker containers. The code is hosted on GitHub and is publically
+        available.
+      </p>
+      <p>
+        So if you are interested, Check this project out and host it yourself. I
+        will have a guide on how to do this in the Readme.md file.
+      </p>
+      <a href="https://github.com/sakuexe/email-sender" target="_blank"
+        >Link to the repository on GitHub</a
+      >
+    </article>
+
+    <main>
+      <h2>Log in</h2>
+      <p>
+        Log in from here to use the this site for testing the API. Make sure
+        that you have added your credentials to the project.
+      </p>
+      <form action="/email" method="post">
+        <input type="text" name="username" placeholder="Username" />
+        <input type="password" name="password" placeholder="Password" />
+        <button type="submit">Button</button>
+      </form>
+    </main>
+  </body>
+</html>
