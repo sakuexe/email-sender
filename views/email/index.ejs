@@ -15,6 +15,8 @@
     </h1>
   </header>
   <form action="/email/send" method="post">
+    <input type="hidden" name="development" value="true">
+    <input type="text" name="honeypot" style="display:none">
     <label for="toEmail">Reciever's email</label>
     <input type="email" name="toEmail" placeholder="Email" />
     <label for="fromEmail">Sender's email</label>

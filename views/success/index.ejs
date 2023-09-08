@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Email successfull</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <h1>
+      Email sent successfully
+    </h1>
+  </header>
+  <main>
+    <table>
+      <tr>
+        <th>From</th>
+        <td>
+          <%= locals.from %>
+        </td>
+      </tr>
+      <tr>
+        <th>To</th>
+        <td>
+          <%= locals.to %>
+        </td>
+      </tr>
+      <tr>
+        <th>Message</th>
+        <td>
+          <%= locals.message %>
+        </td>
+      </tr>
+    </table>
+  </main>
+</body>
+
+</html>
