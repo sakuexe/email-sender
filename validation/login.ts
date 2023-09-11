@@ -5,7 +5,9 @@ dotenv.config();
 
 const isDev = process.env.NODE_ENV === "dev";
 const MAIN_USER = isDev ? process.env.DEV_USERNAME : process.env.USERNAME;
-const MAIN_PASSWORD = isDev ? process.env.DEV_PASSWORD : process.env.PASSWORD;
+const MAIN_PASSWORD = isDev
+  ? process.env.DEV_PASSWORD
+  : process.env.TESTING_PASSWORD;
 
 export default function validateLogIn(
   request: Request,

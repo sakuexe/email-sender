@@ -5,7 +5,7 @@
   <title>Send Email - Testing</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="css/style.css" rel="stylesheet" />
+  <!--<link href="css/style.css" rel="stylesheet" />-->
 </head>
 
 <body>
@@ -18,12 +18,13 @@
     <input type="hidden" name="development" value="true">
     <input type="text" name="honeypot" style="display:none">
     <label for="toEmail">Reciever's email</label>
-    <input type="email" name="toEmail" placeholder="Email" />
-    <label for="fromEmail">Sender's email</label>
-    <input type="email" name="fromEmail" placeholder="Email" />
+    <input id="toEmail" type="email" name="toEmail" placeholder="Email" />
+    <label for="subject">Subject</label>
+    <input id="subject" type="text" name="subject" placeholder="Subject" />
     <textarea name="message" placeholder="Message..."></textarea>
     <button type="submit">Button</button>
   </form>
+
 </body>
 
 </html>

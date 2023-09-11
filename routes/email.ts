@@ -28,50 +28,63 @@ router.post(
   validateForm,
   (request: Request, response: Response) => {
     console.log(request.body);
+
+    let defaultSubject = "Contact form from website";
+    if (request.headers["accept-language"]?.match("^(fi-FI)")) {
+      defaultSubject = "Sähköpostilomake sivustolta";
+    }
+
     if (request.body.development) {
-      response.render("success", {
-        to: request.body.toEmail,
-        from: request.body.fromEmail,
-        message: request.body.message,
+      response.status(200).json({
+        status: 200,
+        verbal: "Email sent successfully",
+        email: {
+          from: process.env.EMAIL,
+          to: request.body.toEmail,
+          subject: request.body.subject || defaultSubject,
+          text: request.body.message,
+          honey: request.body.honeypot,
+          language: request.headers["accept-language"],
+        },
       });
       return;
     }
-
-    response.send("Sending email...");
-
-    return;
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
+        pass: process.env.GMAIL_PASSWORD,
       },
     });
 
     const mailOptions = {
       from: process.env.EMAIL,
-      to: process.env.EMAIL,
-      subject: "Sending Email using Node.js",
-      text: "Hello World!",
+      to: request.body.toEmail,
+      subject: request.body.subject || defaultSubject,
+      text: request.body.message,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.error(`error: ${error}`);
-      } else {
-        console.log(`Email sent: ${info.response}`);
-        response.redirect("/success");
+        console.error(`${error}`);
+        response.status(500).json({
+          status: 500,
+          error: error,
+          info: info,
+          verbal: "Error while sending email",
+          email: mailOptions,
+        });
+        return;
       }
-    });
-  },
-);
 
-router.post(
-  "/success",
-  validateForm,
-  (request: Request, response: Response) => {
-    response.send("Email sent successfully!");
+      response.json({
+        status: 200,
+        info: info,
+        verbal: "Email sent successfully",
+        email: mailOptions,
+      });
+    });
   },
 );
 
