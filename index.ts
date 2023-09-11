@@ -23,6 +23,6 @@ app.use(express.static("public"));
 const useRouter = router;
 app.use("/email", useRouter);
 
-app.listen(8000, () => {
+app.listen(5000, () => {
   console.log(`[server]: Server is running at http://localhost:8000`);
 });
