@@ -3,3 +3,6 @@ env.ts
 dist/
 node_modules/
 package-lock.json
+
+# ssl certs
+ssl/
